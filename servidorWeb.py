@@ -9,7 +9,7 @@ WEB_ROOT = 'wwwroot'
 HOST = '127.0.0.1'
 PORT = 8080
 LOG_FILE = 'server_log.txt'
-LOG_LOCK = threading.Lock
+LOG_LOCK = threading.Lock()
 
 # Mapeamento de extensões de arquivo para Content-Type.
 mimetypes.init()
@@ -43,7 +43,7 @@ def send_error_response(conn, addr, method, path, version, status_code, message,
     </head>
     <body>
         <h1>{status_code} {message}</h1>
-        <p>A requisição não pôde ser processada.</p>
+        <p>A requisicao nao pode ser processada.</p>
     </body>
     </html>
     """
@@ -184,6 +184,7 @@ def handle_client(conn, addr):
 
             full_path = os.path.join(WEB_ROOT, path.lstrip('/'))
             full_path = os.path.normpath(full_path) # Resolve '..' e outros
+            full_path = os.path.abspath(full_path)
 
             # Verificação de segurança: não permitir sair do WEB_ROOT
             if not full_path.startswith(os.path.abspath(WEB_ROOT)):
