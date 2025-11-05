@@ -1,0 +1,9 @@
+# Pasta de conteúdo do servidor
+wwwroot/
+
+# Arquivo de log
+server_log.txt
+
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
